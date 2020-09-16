@@ -1,0 +1,25 @@
+{
+  "name": "pwmct",
+  "version": "1.0.0",
+  "description": "A repository for the project for [Learn with Jason](https://learnwithjason.dev) on September 24, 2020.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon . -e graphql,js,json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eveporcello/pwmct.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eveporcello/pwmct/issues"
+  },
+  "homepage": "https://github.com/eveporcello/pwmct#readme",
+  "dependencies": {
+    "apollo-server": "^2.17.0",
+    "graphql": "^15.3.0",
+    "nodemon": "^2.0.4"
+  }
+}
