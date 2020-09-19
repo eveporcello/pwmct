@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require("apollo-server");
+const { RESTDataSource } = require("apollo-datasource-rest");
 const fetch = require("node-fetch");
 
 const typeDefs = gql`
@@ -9,7 +10,7 @@ const typeDefs = gql`
     id: ID!
   }
   type Man {
-    id: ID!
+    quote: String!
   }
   type Camera {
     id: ID!
@@ -26,13 +27,31 @@ const typeDefs = gql`
   }
 `;
 
+class RonSwansonAPI extends RESTDataSource {
+  constructor() {
+    super();
+    this.baseURL = "https://ron-swanson-quotes.herokuapp.com/v2";
+  }
+  async getQuote() {
+    let data = await this.get("/quotes");
+    return { quote: data[0] };
+  }
+}
+
 const resolvers = {
   Query: {
-    person: {}
+    man: async (parent, args, { dataSources }) =>
+      dataSources.ronAPI.getQuote()
   }
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  dataSources: () => ({
+    ronAPI: new RonSwansonAPI()
+  })
+});
 
 server
   .listen()
