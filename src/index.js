@@ -2,6 +2,7 @@ const { ApolloServer, gql } = require("apollo-server");
 const { RESTDataSource } = require("apollo-datasource-rest");
 const fetch = require("node-fetch");
 const MongoClient = require("mongodb").MongoClient;
+const women = require("./women.json");
 
 require("dotenv").config();
 
@@ -16,6 +17,9 @@ const typeDefs = gql`
   }
   type Woman {
     id: ID!
+    first: String!
+    last: String!
+    location: String!
   }
   type Man {
     quote: String!
@@ -36,7 +40,7 @@ const typeDefs = gql`
   }
   type Query {
     person(username: String!): Person!
-    woman: Woman!
+    woman(id: ID!): Woman!
     man: Man!
     camera(sortBy: SortCategories): Camera!
     tv(sortBy: SortCategories!): TV!
@@ -67,6 +71,8 @@ const resolvers = {
     person: async (parent, { username }, { people }) => {
       return people.findOne({ username });
     },
+    woman: async (parent, { id }) =>
+      women.find((woman) => id == woman.id),
     man: async () => {
       const quoteArray = await fetch(
         "https://ron-swanson-quotes.herokuapp.com/v2/quotes"

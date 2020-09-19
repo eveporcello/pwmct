@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "first": "Sarah",
+    "last": "Ronau",
+    "location": "Reno, NV"
+  },
+  {
+    "id": 2,
+    "first": "Jenna",
+    "last": "Zigler",
+    "location": "Austin, TX"
+  },
+  {
+    "id": 3,
+    "first": "Chelsea",
+    "last": "Pettry",
+    "location": "Lambertville, MI"
+  },
+  {
+    "id": 4,
+    "first": "Anna",
+    "last": "Kerner",
+    "location": "Truckee, CA"
+  },
+  {
+    "id": 5,
+    "first": "Catherine",
+    "last": "Cook",
+    "location": "Incline Village, NV"
+  },
+  {
+    "id": 6,
+    "first": "Ali",
+    "last": "Altimirano",
+    "location": "Tahoe City, CA"
+  },
+  {
+    "id": 7,
+    "first": "Andrea",
+    "last": "Fishman",
+    "location": "Tahoe Vista, CA"
+  },
+  {
+    "id": 8,
+    "first": "Jordan",
+    "last": "Vida",
+    "location": "Sausalito, CA"
+  },
+  {
+    "id": 9,
+    "first": "Ari",
+    "last": "Rehorn",
+    "location": "Truckee, CA"
+  },
+  {
+    "id": 10,
+    "first": "Genna",
+    "last": "Masters",
+    "location": "Truckee, CA"
+  },
+  {
+    "id": 11,
+    "first": "Jenae",
+    "last": "Pino",
+    "location": "Truckee, CA"
+  },
+  {
+    "id": 12,
+    "first": "Sarah",
+    "last": "Hoyle",
+    "location": "Truckee, CA"
+  },
+  {
+    "id": 13,
+    "first": "Sarah",
+    "last": "McClairie",
+    "location": "Truckee, CA"
+  }
+]
