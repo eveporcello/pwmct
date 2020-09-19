@@ -107,10 +107,13 @@ const start = async () => {
       bestBuyAPI: new BestBuyAPI()
     })
   });
+
+  const PORT = process.env.PORT || 4000;
+
   server
-    .listen()
-    .then(({ url }) =>
-      console.log(`Apollo Server running at ${url}`)
+    .listen({ port: PORT })
+    .then(({ port }) =>
+      console.log(`Apollo Server running at ${port}`)
     );
 };
 
