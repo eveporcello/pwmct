@@ -52,17 +52,17 @@ class BestBuyAPI extends RESTDataSource {
     super();
     this.baseURL = "https://api.bestbuy.com/v1";
   }
-  async getTV(sortBy) {
-    const tv = await this.get(
-      `/products(categoryPath.name=TVs)?format=json&show=sku,name,salePrice,description&sort=${sortBy}&apiKey=${process.env.BB_API_KEY}`
-    ).then((data) => data.products[0]);
-    return tv;
-  }
   async getCamera(sortBy) {
     const camera = await this.get(
       `/products(categoryPath.name=digital%20cameras)?format=json&show=sku,name,salePrice,description&sort=${sortBy}&apiKey=${process.env.BB_API_KEY}`
     ).then((data) => data.products[0]);
     return camera;
+  }
+  async getTV(sortBy) {
+    const tv = await this.get(
+      `/products(categoryPath.name=TVs)?format=json&show=sku,name,salePrice,description&sort=${sortBy}&apiKey=${process.env.BB_API_KEY}`
+    ).then((data) => data.products[0]);
+    return tv;
   }
 }
 
@@ -71,20 +71,19 @@ const resolvers = {
     person: async (parent, { username }, { people }) => {
       return people.findOne({ username });
     },
-    woman: async (parent, { id }) =>
-      women.find((woman) => id == woman.id),
+    woman: (parent, { id }) => women.find((woman) => id == woman.id),
     man: async () => {
-      const quoteArray = await fetch(
+      const [quote] = await fetch(
         "https://ron-swanson-quotes.herokuapp.com/v2/quotes"
       ).then((res) => res.json());
       return {
-        quote: quoteArray[0]
+        quote
       };
     },
-    tv: async (parent, { sortBy }, { dataSources }) =>
-      dataSources.bestBuyAPI.getTV(sortBy),
     camera: async (parent, { sortBy }, { dataSources }) =>
-      dataSources.bestBuyAPI.getCamera(sortBy)
+      dataSources.bestBuyAPI.getCamera(sortBy),
+    tv: async (parent, { sortBy }, { dataSources }) =>
+      dataSources.bestBuyAPI.getTV(sortBy)
   }
 };
 
